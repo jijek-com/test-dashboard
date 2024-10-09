@@ -94,7 +94,7 @@ export class WidgetsComponent implements OnInit, OnDestroy {
     return this.projects.find(project => project.id === projectId);
   }
 
-  drop(event: CdkDragDrop<string[]>): void {
+  drop(event: CdkDragDrop<Widget[]>): void {
     const updatedWidgets = [...this.widgets];
     moveItemInArray(updatedWidgets, event.previousIndex, event.currentIndex);
 

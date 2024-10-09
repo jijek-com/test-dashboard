@@ -40,7 +40,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this._projectService.getAllWidgets().subscribe({
       next: (widgets) => {
         this.widgets = widgets;
-        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Что-то пошло не так(((:', err);
@@ -90,7 +89,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this._projectService.updateProject(updatedProject);
   }
 
-  drop(event: CdkDragDrop<string[]>): void {
+  drop(event: CdkDragDrop<Project[]>): void {
     const updatedProjects = [...this.projects];
     moveItemInArray(updatedProjects, event.previousIndex, event.currentIndex);
 

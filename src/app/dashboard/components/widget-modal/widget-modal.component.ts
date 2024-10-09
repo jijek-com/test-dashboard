@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, type OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, type OnInit} from '@angular/core';
 import {Widget} from "../../types/widgets.type";
 import {NzModalRef} from "ng-zorro-antd/modal";
 import {ProjectsService} from "../../services/projects.service";
