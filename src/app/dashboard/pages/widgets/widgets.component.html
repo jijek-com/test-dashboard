@@ -1,0 +1,24 @@
+<article class="widget-feed">
+  <header class="widget-feed__your-projects">
+    <div class="widget-feed__title-container">
+      <p class="widget-feed__title">Виджеты</p>
+
+      <div class="widget-feed__tooltip" nz-tooltip nzTooltipPlacement="bottom"
+           nzTooltipTitle="Здесь Вы можете добавить новые виджеты" [nzTooltipOrigin]="span.elementRef">
+        <span nz-icon nz-element nzType="question-circle" nzTheme="outline" #span="nzElement"></span>
+      </div>
+    </div>
+
+    <button nz-button nzType="text" class="widget-feed__btn" (click)="openModal()">
+      <span nz-icon nzType="plus" nzTheme="outline"></span>
+    </button>
+  </header>
+
+  <div cdkDropList (cdkDropListDropped)="drop($event)" class="widget-feed__body">
+    <div *ngFor="let widget of widgets; trackBy: trackByFn" cdkDrag class="widget-feed__widget" [ngClass]="widget.size">
+      <app-widget [widget]="widget"
+                  [project]="getProjectById(widget.projectId)"
+                  (widgetUpdated)="onWidgetUpdated($event)"></app-widget>
+    </div>
+  </div>
+</article>

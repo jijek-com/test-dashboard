@@ -1,0 +1,28 @@
+<div class="widget-element">
+  <div class="widget-element__title-block">
+    <div class="">{{ widget.name }} <span *ngIf="project?.name"> / {{project?.name}} / </span>
+      <span class="date" *ngIf="project?.startDate && project?.endDate">({{ project?.startDate | date: 'shortDate' }} - {{ project?.endDate | date }})</span>
+    </div>
+
+    <div class="widget-element__btns">
+      <button nz-button nzType="text" class="widget-element__btn" (click)="editWidget()">
+        <span nz-icon nzType="edit" nzTheme="outline"></span>
+      </button>
+
+      <button nz-button nzType="text" class="widget-element__btn" (click)="removeWidget(widget.id)">
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="widget-element__body-block project-body" *ngIf="widget.projectId">
+    <ng-container *ngIf="widget.type === 'normal'">
+      <nz-progress class="widget-element__progress" [nzPercent]="progress"></nz-progress>
+    </ng-container>
+
+    <ng-container *ngIf="widget.type === 'circular'">
+      <nz-progress class="widget-element__progress" [nzPercent]="progress" nzType="circle"></nz-progress>
+    </ng-container>
+  </div>
+</div>

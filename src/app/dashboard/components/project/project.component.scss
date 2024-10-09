@@ -1,0 +1,29 @@
+.project-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.project-element__title-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.project-element__body-block {
+  margin-top: 11px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.date {
+  color: #00000073;
+}
+
+.project-element__btn {
+  color: #00000073;
+}

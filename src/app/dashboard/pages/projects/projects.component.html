@@ -1,0 +1,31 @@
+<article class="project-feed">
+  <header class="project-feed__your-projects">
+    <div class="project-feed__title-block">
+      <div class="project-feed__title-container">
+        <h3 class="project-feed__title">Ваши проекты</h3>
+
+        <div class="project-feed__tooltip" nz-tooltip nzTooltipPlacement="bottom"
+             nzTooltipTitle="Здесь Вы можете добавить новые проекты" [nzTooltipOrigin]="span.elementRef">
+          <span nz-icon nz-element nzType="question-circle" nzTheme="outline" #span="nzElement"></span>
+        </div>
+      </div>
+
+      <button nz-button nzType="text" class="project-feed__btn" (click)="openModal()">
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+      </button>
+    </div>
+  </header>
+
+<!--  <div class="project-feed__body">-->
+<!--    <div class="project-feed__project" *ngFor="let project of projects; trackBy: trackByFn ">-->
+<!--      <app-project [project]="project" [widgets]="widgets" (projectUpdate)="onProjectUpdated($event)"></app-project>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div cdkDropList (cdkDropListDropped)="drop($event)" class="project-feed__body">
+    <div *ngFor="let project of projects; trackBy: trackByFn" cdkDrag class="project-feed__project">
+      <app-project [project]="project" [widgets]="widgets" (projectUpdate)="onProjectUpdated($event)"></app-project>
+    </div>
+  </div>
+
+</article>

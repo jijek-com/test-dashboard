@@ -1,0 +1,54 @@
+<div class="project-modal__body">
+  <div class="project-modal__row">
+    <label>Название программы:</label>
+    <input nz-input required [(ngModel)]="project.name" #nameInput="ngModel" />
+    <div *ngIf="nameInput.invalid && nameInput.touched" class="error-message">
+      Поле обязательно для заполнения.
+    </div>
+  </div>
+
+  <div class="project-modal__row">
+    <label>Задач необходимо решить:</label>
+    <input nz-input required type="number" [(ngModel)]="project.tasksTotal" #nameInput="ngModel" />
+  </div>
+
+  <div class="project-modal__row">
+    <label>Задач сделано:</label>
+    <input nz-input required type="number" [(ngModel)]="project.tasksCompleted" #nameInput="ngModel" />
+  </div>
+
+  <div class="project-modal__row">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired>Дата начала</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-date-picker [(ngModel)]="project.startDate" nzPlaceHolder="Выберите дату начала" [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <div class="project-modal__row">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired>Дата конца</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <nz-date-picker [(ngModel)]="project.endDate" nzPlaceHolder="Выберите дату конца" [ngModelOptions]="{ standalone: true }"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <div class="project-modal__row">
+    <label>Виджеты:</label>
+    <nz-select [(ngModel)]="project.widgetId">
+      <nz-option
+        *ngFor="let widget of widgets"
+        [nzValue]="widget.id"
+        [nzLabel]="widget.name">
+      </nz-option>
+    </nz-select>
+  </div>
+</div>
+
+<div class="project-modal__footer">
+  <button nz-button (click)="handleSave()">Сохранить</button>
+  <button nz-button nzType="default" (click)="handleCancel()">Отмена</button>
+</div>
+

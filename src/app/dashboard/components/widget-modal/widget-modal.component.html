@@ -1,0 +1,48 @@
+<div class="widget-modal__body">
+  <div class="widget-modal__row">
+    <label>Название виджета:</label>
+    <input nz-input required [(ngModel)]="widget.name" #nameInput="ngModel" />
+    <div *ngIf="nameInput.invalid && nameInput.touched" class="error-message">
+      Поле обязательно для заполнения.
+    </div>
+  </div>
+
+  <div class="widget-modal__row">
+    <label>Тип виджета:</label>
+    <nz-select [(ngModel)]="widget.type">
+      <nz-option nzValue="normal" nzLabel="normal"></nz-option>
+      <nz-option nzValue="circular" nzLabel="circular"></nz-option>
+    </nz-select>
+  </div>
+
+  <div class="widget-modal__row" hidden>
+    <label>Номер сортировки:</label>
+    <input nz-input readonly [(ngModel)]="widget.sortOrder" type="number" />
+  </div>
+
+  <div class="widget-modal__row">
+    <label>Размер виджета:</label>
+    <nz-select [(ngModel)]="widget.size">
+      <nz-option nzValue="small" nzLabel="small"></nz-option>
+      <nz-option nzValue="medium" nzLabel="medium"></nz-option>
+      <nz-option nzValue="large" nzLabel="large"></nz-option>
+    </nz-select>
+  </div>
+
+  <div class="widget-modal__row">
+    <label>Проект:</label>
+    <nz-select [(ngModel)]="widget.projectId">
+      <nz-option
+        *ngFor="let project of projects"
+        [nzValue]="project.id"
+        [nzLabel]="project.name">
+      </nz-option>
+    </nz-select>
+  </div>
+</div>
+
+<div class="widget-modal__footer">
+  <button nz-button (click)="handleSave()">Сохранить</button>
+  <button nz-button nzType="default" (click)="handleCancel()">Отмена</button>
+</div>
+

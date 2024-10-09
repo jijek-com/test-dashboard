@@ -1,0 +1,21 @@
+<div class="project-element">
+  <div class="project-element__title-block">
+    <div class="">{{ project.name }}
+      <span class="date">({{ project.startDate | date: 'shortDate' }} - {{ project.endDate | date }})</span>
+    </div>
+
+    <div class="project-element__btns">
+      <button nz-button nzType="text" class="project-element__btn" (click)="editProject()">
+        <span nz-icon nzType="edit" nzTheme="outline"></span>
+      </button>
+
+      <button nz-button nzType="text" class="project-element__btn" (click)="removeProject(project.id)">
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="project-element__body-block project-body">
+    <nz-progress class="project-body__progress" [nzPercent]="progress"></nz-progress>
+  </div>
+</div>
